@@ -15,6 +15,7 @@ builder.Services.AddSwaggerGen();
 // Register DynamoDB context for dependency injection
 builder.Services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
