@@ -25,7 +25,7 @@ public class TransactionRepository
         return page;
     }
 
-    public async Task<Transaction> GetTransaction(string id)
+    public async Task<Transaction> GetTransactionById(string id)
     {
         return await _context.LoadAsync<Transaction>(id);
     }
