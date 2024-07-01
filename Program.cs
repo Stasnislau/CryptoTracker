@@ -1,7 +1,6 @@
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
-using Amazon.DynamoDBv2.DocumentModel;
-using Amazon.Extensions.NETCore.Setup;
+using Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +11,23 @@ builder.Services.AddAWSService<IAmazonDynamoDB>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddControllers();
+
+builder.Services.AddScoped<TransactionService>();
+
+builder.Services.AddScoped<TransactionRepository>();
+
 // Register DynamoDB context for dependency injection
 builder.Services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", builder => builder
+        .WithOrigins("*")
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowCredentials());
+});
 
 
 var app = builder.Build();
@@ -27,4 +41,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+
+app.MapControllers();
 app.Run();
