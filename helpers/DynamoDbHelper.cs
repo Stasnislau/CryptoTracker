@@ -26,20 +26,12 @@ namespace CryptoTracker.Helpers
                             AttributeName = "Id",
                             AttributeType = ScalarAttributeType.S
                         },
-                        new AttributeDefinition{
-                            AttributeName = "Date",
-                            AttributeType = ScalarAttributeType.S
-                        },
                     },
                     KeySchema = new List<KeySchemaElement>{
                         new KeySchemaElement{
                             AttributeName = "Id",
                             KeyType = KeyType.HASH
                         },
-                        new KeySchemaElement{
-                            AttributeName = "Date",
-                            KeyType = KeyType.RANGE
-                        }
                     },
                     ProvisionedThroughput = new ProvisionedThroughput
                     {

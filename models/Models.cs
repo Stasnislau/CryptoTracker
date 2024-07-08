@@ -8,8 +8,8 @@ namespace Models
         [DynamoDBHashKey]
         public required string Id { get; set; }
 
-        [DynamoDBRangeKey]
-        public required string Date { get; set; } // Date of transaction
+        [DynamoDBProperty]
+        public DateTime Date { get; set; } // Date of transaction
         
         [DynamoDBProperty]
         public required string Currency { get; set; }
