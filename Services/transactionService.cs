@@ -28,21 +28,27 @@ namespace Services
             return await _transactionRepository.AddTransaction(transaction);
         }
 
-        public async Task<Transaction> UpdateTransaction(string id, Transaction transaction)
+        public async Task<Transaction> UpdateTransaction(Transaction transaction)
         {
-            // return await _transactionRepository.UpdateTransaction(id, transaction);
-            throw new NotImplementedException();
+            var currentTransaction = _transactionRepository.GetTransactionById(transaction.Id);
+            if (transaction == null)
+            {
+                throw new Exception("Transaction not found.");
+            }
+            await _transactionRepository.UpdateTransaction(transaction);
+            return transaction;
         }
 
-        public async Task<Transaction> DeleteTransaction(string id)
+        public async Task<bool> DeleteTransaction(string id)
         {
-            // return await _transactionRepository.DeleteTransaction(id);
-            throw new NotImplementedException();
+            var transaction = _transactionRepository.GetTransactionById(id);
+            if (transaction == null)
+            {
+                return false;
+            }
+            await _transactionRepository.DeleteTransaction(id);
+            return true;
         }
-
-
-
-
     }
 
 }

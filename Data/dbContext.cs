@@ -54,9 +54,10 @@ public class TransactionRepository
         return transaction;
     }
 
-    public async Task DeleteTransaction(string id)
+    public async Task<bool> DeleteTransaction(string id)
     {
         await _context.DeleteAsync<Transaction>(id);
+        return true;
     }
 
 }

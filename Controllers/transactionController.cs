@@ -41,10 +41,10 @@ public class TransactionController : Controller
         return Ok(newTransaction);
     }
 
-    [HttpPut("{id}")]
+    [HttpPut()]
     public async Task<IActionResult> UpdateTransaction(string id, [FromBody] Transaction transaction)
     {
-        var updatedTransaction = await _transactionService.UpdateTransaction(id, transaction);
+        var updatedTransaction = await _transactionService.UpdateTransaction(transaction);
         return Ok(updatedTransaction);
     }
 
@@ -52,6 +52,8 @@ public class TransactionController : Controller
     public async Task<IActionResult> DeleteTransaction(string id)
     {
         var deletedTransaction = await _transactionService.DeleteTransaction(id);
-        return Ok(deletedTransaction);
+        return deletedTransaction ? Ok(new {
+            message = "Transaction deleted."
+        }) : NotFound();
     }
 }
