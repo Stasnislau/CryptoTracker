@@ -3,6 +3,8 @@ using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 using Models;
+using Models.DTOs;
+using Sprache;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -30,10 +32,20 @@ public class TransactionRepository
         return await _context.LoadAsync<Transaction>(id);
     }
 
-    public async Task<Transaction> AddTransaction(Transaction transaction)
+    public async Task<Transaction> AddTransaction(TransactionDTO transaction)
     {
-        await _context.SaveAsync(transaction);
-        return transaction;
+        var newTransaction = new Transaction
+        {
+            Id = Guid.NewGuid().ToString(),
+            Date = transaction.Date,
+            Currency = transaction.Currency,
+            Description = transaction.Description,
+            CurrencyPrice = transaction.CurrencyPrice,
+            Amount = transaction.Amount,
+            Type = transaction.Type
+        };
+        await _context.SaveAsync(newTransaction);
+        return newTransaction;
     }
 
     public async Task<Transaction> UpdateTransaction(Transaction transaction)

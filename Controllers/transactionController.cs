@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using Models;
+using Models.DTOs;
 
 [Route("api/[controller]")]
 public class TransactionController : Controller
@@ -27,8 +28,15 @@ public class TransactionController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateTransaction([FromBody] Transaction transaction)
+    public async Task<IActionResult> CreateTransaction([FromBody] TransactionDTO transaction)
     {
+        if (transaction == null)
+        {
+            return BadRequest(new {
+                error = "No transaction provided."
+            
+            });
+        }
         var newTransaction = await _transactionService.CreateTransaction(transaction);
         return Ok(newTransaction);
     }

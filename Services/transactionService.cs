@@ -1,4 +1,5 @@
 using Models;
+using Models.DTOs;
 
 namespace Services
 {
@@ -22,10 +23,9 @@ namespace Services
             return await _transactionRepository.GetTransactionById(id);
         }
 
-        public async Task<Transaction> CreateTransaction(Transaction transaction)
+        public async Task<Transaction> CreateTransaction(TransactionDTO transaction)
         {
-            // return await _transactionRepository.CreateTransaction(transaction);
-            throw new NotImplementedException();
+            return await _transactionRepository.AddTransaction(transaction);
         }
 
         public async Task<Transaction> UpdateTransaction(string id, Transaction transaction)
