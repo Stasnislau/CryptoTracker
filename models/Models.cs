@@ -10,7 +10,7 @@ namespace Models
 
         [DynamoDBProperty]
         public DateTime Date { get; set; } // Date of transaction
-        
+
         [DynamoDBProperty]
         public required string Currency { get; set; }
 
@@ -24,7 +24,7 @@ namespace Models
 
         [DynamoDBProperty]
         public decimal Amount { get; set; }
-        
+
         [DynamoDBProperty]
         public required string Type { get; set; } // Buy/SELL
 

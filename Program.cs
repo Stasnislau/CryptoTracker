@@ -33,10 +33,11 @@ builder.Services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
 builder.Services.AddSingleton<TransactionRepository>();
 
 
+builder.Services.AddAuthorization();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigin", builder => builder
-        .WithOrigins("*")
+        .WithOrigins(Environment.GetEnvironmentVariable("CLIENT_URL") ?? throw new InvalidOperationException("No client URL found"))
         .AllowAnyHeader()
         .AllowAnyMethod()
         .AllowCredentials());
@@ -53,6 +54,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowSpecificOrigin");
 
 using (var scope = app.Services.CreateScope())
 {

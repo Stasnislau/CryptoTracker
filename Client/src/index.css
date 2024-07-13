@@ -4,7 +4,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -36,10 +36,8 @@ body {
 }
 
 .App {
-  .App {
-    @apply w-[100dvw];
-    @apply h-[100dvh];
-    @apply bg-gradient-to-b from-blue-500 to-blue-900;
-    @apply overflow-x-hidden;
-  }
+  @apply w-[100dvw];
+  @apply h-[100dvh];
+  @apply bg-gradient-to-b from-purple-500 to-purple-900;
+  @apply overflow-x-hidden;
 }
