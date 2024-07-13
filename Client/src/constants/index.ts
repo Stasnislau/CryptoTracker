@@ -1,0 +1,57 @@
+const availableCurrenciesData = [
+  { name: 'Litecoin', tag: 'ltc' },
+  { name: 'Luna', tag: 'luna' },
+  { name: 'Uniswap', tag: 'uni' },
+  { name: 'Bitcoin', tag: 'btc' },
+  { name: 'Stellar', tag: 'xlm' },
+  { name: 'Ripple', tag: 'xrp' },
+  { name: 'Cardano', tag: 'ada' },
+  { name: 'Bitcoin Cash', tag: 'bch' },
+  { name: 'Dogecoin', tag: 'doge' },
+  { name: 'Ethereum', tag: 'eth' },
+  { name: 'Binance Coin', tag: 'bnb' },
+  { name: 'Polkadot', tag: 'dot' },
+  { name: 'Chainlink', tag: 'link' },
+  { name: 'Solana', tag: 'sol' },
+  { name: 'Polygon', tag: 'matic' },
+  { name: 'Avalanche', tag: 'avax' },
+  { name: 'VeChain', tag: 'vet' },
+  { name: 'Terra', tag: 'luna' },
+  { name: 'Algorand', tag: 'algo' },
+  { name: 'Cosmos', tag: 'atom' },
+  { name: 'Shiba Inu', tag: 'shib' },
+  { name: 'Axie Infinity', tag: 'axs' },
+  { name: 'Elrond', tag: 'egld' },
+  { name: 'Filecoin', tag: 'fil' },
+  { name: 'Internet Computer', tag: 'icp' },
+  { name: 'The Graph', tag: 'grt' },
+  { name: 'Aave', tag: 'aave' },
+  { name: 'Kusama', tag: 'ksm' },
+  { name: 'Tezos', tag: 'xtz' },
+  { name: 'Monero', tag: 'xmr' },
+  { name: 'Tron', tag: 'trx' },
+  { name: 'EOS', tag: 'eos' },
+  { name: 'Neo', tag: 'neo' },
+  { name: 'Dash', tag: 'dash' },
+  { name: 'Zcash', tag: 'zec' },
+  { name: 'IOTA', tag: 'miota' },
+  { name: 'Theta', tag: 'theta' },
+  { name: 'SushiSwap', tag: 'sushi' },
+  { name: 'Compound', tag: 'comp' },
+  { name: 'Maker', tag: 'mkr' },
+  { name: 'Enjin Coin', tag: 'enj' },
+  { name: 'Yearn.finance', tag: 'yfi' },
+  { name: 'DeFi Pulse Index', tag: 'dpi' },
+  { name: 'PancakeSwap', tag: 'cake' },
+  { name: 'Waves', tag: 'waves' },
+  { name: 'Celo', tag: 'celo' },
+];
+
+export const availableCurrencies = availableCurrenciesData.map(
+  (currency) => {
+    return {
+      name: currency.name,
+      tag: currency.tag.toUpperCase()
+    };
+  }
+);
